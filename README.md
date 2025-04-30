@@ -13,7 +13,7 @@ Scan for vulnerabilities using Nuclei.
 Installation
 
 Clone the repository:
-git clone https://github.com/yourusername/D_WebScanner.git
+git clone https://github.com/hackracy/D_WebScanner.git
 cd D_WebScanner
 Run the Dilshuppa.sh setup script:
 chmod +x Dilshuppa.sh
