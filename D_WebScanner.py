@@ -8,6 +8,16 @@ website = input("Enter da site name (no https lol): ").strip()
 stufffolder = "results/" + website
 os.makedirs(stufffolder, exist_ok=True)
 
+def display_intro():
+    intro_message = '''
+    ##################################################
+    #              Dilshuppa D_WebScanner            #
+    #               Author: DILSHUPPA                #
+    #    linkedIn : linkedin.com/in/dilshuppa        #
+    ##################################################
+    '''
+    print(intro_message)
+    print("Don't Misuse your Hacking skills, Hacking is an Art, So Hackers are Artists. try to respect them! \n")
 def do_cmd(cmd, out_file=None):
     print(">>> running: " + " ".join(cmd))
     if out_file:
@@ -17,7 +27,7 @@ def do_cmd(cmd, out_file=None):
         subprocess.run(cmd)
 
 def find_subs():
-    print("### Finding da subs 😎")
+    print("### Finding da subs ")
     do_cmd(["subfinder", "-d", website, "-silent"], stufffolder + "/subz.txt")
 
 def nmapscan():
@@ -25,11 +35,11 @@ def nmapscan():
     do_cmd(["nmap", "-sV", "-T4", website], stufffolder + "/nmapscan.txt")
 
 def techie():
-    print("### whatweb go brrrr 🕵️")
+    print("### whatweb go brrrr ")
     do_cmd(["whatweb", website], stufffolder + "/tech.txt")
 
 def nukem():
-    print("### time for nuclear vuln checks 💣")
+    print("### time for nuclear vuln checks ")
     do_cmd(["nuclei", "-l", stufffolder + "/subz.txt", "-silent", "-o", stufffolder + "/boom.txt"])
 
 def dirs_brute(subz):
@@ -62,7 +72,7 @@ def try_bypazz(badurl):
             pass
 
 def crawlz(subz):
-    print("### spider time 🕷️", subz)
+    print("spider time ", subz)
     try:
         r = requests.get("http://" + subz, timeout=5)
         stuff = set()
@@ -79,7 +89,7 @@ def crawlz(subz):
         pass
 
 def run_param_spider(subz):
-    print("### running ParamSpider on", subz)
+    print("running ParamSpider on", subz)
     param_output = stufffolder + "/" + subz.replace(".", "_") + "_params.txt"
     subprocess.run(["python3", "ParamSpider/paramspider.py", "-d", subz, "-o", param_output])
 
@@ -100,5 +110,5 @@ def start_thing():
         run_param_spider(lolsub)
 
 if __name__ == "__main__":
-    print("~~~ welcum to D_WebRecon by Dilshuppa v0.0.1 ~~~")
+    print("Be patient if you have passion.")
     start_thing()
